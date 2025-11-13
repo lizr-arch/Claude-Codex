@@ -28,6 +28,11 @@ chmod +x install.sh
 2. 在聊天中输入：`/available-tools`
 3. 确认能看到codex相关工具
 
+### 示例
+<img width="606" height="540" alt="image" src="https://github.com/user-attachments/assets/52c60cb3-7e4c-4e56-aec8-ee4f4f1e4af7" />
+<img width="746" height="507" alt="image" src="https://github.com/user-attachments/assets/510453cc-cc2d-4163-8865-178763411384" />
+
+
 ## 🛠️ 配置选项
 
 ### 简单配置 (推荐新手)
