@@ -1,10 +1,11 @@
-# Claude Code + Codex Windows Installation Script (PowerShell) - Custom Paths
+# Claude Code + Codex Windows Installation Script (PowerShell) - Dynamic Paths
 
 $ErrorActionPreference = "Stop"
 
-# === User Custom Paths ===
-$UserClaudeDataDir = "C:\Users\lizhirui01\.claude"
-$UserCodexDir = "C:\Users\lizhirui01\.codex"
+# === Dynamic User Paths ===
+# Use environment variables to avoid hardcoding usernames
+$UserClaudeDataDir = "$env:USERPROFILE\.claude"
+$UserCodexDir = "$env:USERPROFILE\.codex"
 # =========================
 
 function Print-Message {
@@ -90,14 +91,25 @@ foreach ($pkg in $packages) {
 # === Locate Codex Executable ===
 Print-Message "Locating Codex..." "Cyan"
 $CodexExePath = "codex" # Default to PATH
-if (Test-Path "$UserCodexDir\codex.exe") {
-    $CodexExePath = "$UserCodexDir\codex.exe"
-    Print-Message "Found Codex at: $CodexExePath"
-} elseif (Test-Path "$UserCodexDir\bin\codex.exe") {
-    $CodexExePath = "$UserCodexDir\bin\codex.exe"
-    Print-Message "Found Codex at: $CodexExePath"
-} else {
-    Print-Message "codex.exe not found in $UserCodexDir. Will try using global 'codex' command." "Yellow"
+
+# Define potential paths dynamically
+$PotentialPaths = @(
+    "$UserCodexDir\codex.exe",
+    "$UserCodexDir\bin\codex.exe",
+    "$env:APPDATA\npm\node_modules\@openai\codex\vendor\x86_64-pc-windows-msvc\codex\codex.exe",
+    "$env:APPDATA\npm\node_modules\@openai\codex\vendor\aarch64-pc-windows-msvc\codex\codex.exe"
+)
+
+foreach ($path in $PotentialPaths) {
+    if (Test-Path $path) {
+        $CodexExePath = $path
+        Print-Message "Found Codex at: $CodexExePath"
+        break
+    }
+}
+
+if ($CodexExePath -eq "codex") {
+    Print-Message "Specific codex.exe not found in common locations. Will try using global 'codex' command." "Yellow"
 }
 
 # 4. Generate Config File
