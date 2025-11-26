@@ -141,7 +141,7 @@ mcp__codex__codex-reply(conversationId="<ID>", prompt="[指令]")
 ```json
 {
   "exa": {
-    "command": "npx",
+    "command": "npx", // Windows 用户请改为 "npx.cmd"
     "args": ["-y", "exa-mcp-server"],
     "env": {
       "EXA_API_KEY": "your-api-key-here",
@@ -155,7 +155,7 @@ mcp__codex__codex-reply(conversationId="<ID>", prompt="[指令]")
 ```json
 {
   "chrome-devtools": {
-    "command": "npx",
+    "command": "npx", // Windows 用户请改为 "npx.cmd"
     "args": ["chrome-devtools-mcp@latest"],
     "env": {
       "WORKING_DIR": ".claude"

@@ -8,7 +8,8 @@ claude+codex/
 ├── README-config.md            # 配置文件详细说明
 ├── troubleshooting.md          # 故障排除指南
 ├── INDEX.md                    # 项目总览（本文件）
-├── install.sh                  # 一键安装脚本
+├── install.ps1                 # Windows 安装脚本 (PowerShell)
+├── install.sh                  # macOS/Linux 安装脚本
 ├── verify-config.sh            # 配置验证脚本
 ├── claude-desktop-config.json  # 标准配置模板
 ├── config-simple.json          # 简单配置模板
@@ -44,7 +45,8 @@ claude+codex/
 
 | 脚本 | 功能 | 使用方法 |
 |------|------|----------|
-| [install.sh](install.sh) | 一键安装配置 | `./install.sh` |
+| [install.ps1](install.ps1) | Windows 一键安装 | `.\install.ps1` |
+| [install.sh](install.sh) | macOS/Linux 一键安装 | `./install.sh` |
 | [verify-config.sh](verify-config.sh) | 验证配置正确性 | `./verify-config.sh` |
 
 ## ⚙️ 配置模板

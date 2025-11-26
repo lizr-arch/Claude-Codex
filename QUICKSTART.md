@@ -2,10 +2,19 @@
 
 ## 2分钟配置Claude Code + Codex协作环境
 
-### 第一步：运行安装命令
-```bash
-curl -sSL https://raw.githubusercontent.com/Pluviobyte/Claude-Codex/main/install.sh | bash
-```
+### Windows 用户 (PowerShell)
+1. **运行安装脚本**
+   ```powershell
+   .\install.ps1
+   ```
+2. **选择配置**：脚本会提示选择简单/标准/高级配置。
+3. **重启验证**：重启 Claude Desktop，输入 `/available-tools`。
+
+### macOS / Linux 用户
+1. **运行安装命令**
+   ```bash
+   curl -sSL https://raw.githubusercontent.com/Pluviobyte/Claude-Codex/main/install.sh | bash
+   ```
 
 ### 第二步：选择配置类型
 - **1**: 简单配置（推荐新手）

@@ -17,12 +17,16 @@
 ./verify-config.sh
 
 # 2. 检查配置文件位置
-ls -la ~/Library/Application\ Support/Claude/claude_desktop_config.json  # macOS
-ls -la ~/.config/claude/claude_desktop_config.json  # Linux
-ls -la %APPDATA%/Claude/claude_desktop_config.json  # Windows
+# macOS/Linux
+ls -la ~/Library/Application\ Support/Claude/claude_desktop_config.json
+# Windows (PowerShell)
+Get-Item "$env:APPDATA\Claude\claude_desktop_config.json"
 
 # 3. 重新安装配置
+# macOS/Linux
 ./install.sh
+# Windows
+.\install.ps1
 ```
 
 ### 🔑 API密钥问题
@@ -87,6 +91,9 @@ export HTTPS_PROXY=http://your-proxy:port
 # 1. 使用sudo安装（Linux/macOS）
 sudo npm install -g @modelcontextprotocol/server-sequential-thinking
 
+# Windows用户 (PowerShell管理员模式)
+npm install -g @modelcontextprotocol/server-sequential-thinking
+
 # 2. 清除npm缓存
 npm cache clean --force
 
@@ -105,6 +112,7 @@ pip3 install --user uv
 1. Node.js版本不兼容
 2. Python环境问题
 3. 端口被占用
+4. Windows路径配置错误 (常见)
 
 **解决方案**:
 ```bash
@@ -112,13 +120,18 @@ pip3 install --user uv
 node --version  # 需要 >= 16.0.0
 
 # 2. 检查Python版本
-python3 --version  # 需要 >= 3.8
+python --version  # 需要 >= 3.8
 
 # 3. 手动测试MCP服务器
+# macOS/Linux
 npx @modelcontextprotocol/server-sequential-thinking --version
-codex --version
+# Windows (注意使用 npx.cmd)
+npx.cmd @modelcontextprotocol/server-sequential-thinking --version
 
-# 4. 查看错误日志
+# 4. 检查Codex路径 (Windows)
+Get-Command codex
+
+# 5. 查看错误日志
 tail -f ~/.claude/logs/*.log
 ```
 

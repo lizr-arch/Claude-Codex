@@ -19,7 +19,7 @@ npx -y @modelcontextprotocol/server-sequential-thinking
 ```json
 {
   "type": "stdio",
-  "command": "npx",
+  "command": "npx", // Windows 用户请改为 "npx.cmd"
   "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"],
   "env": {
     "WORKING_DIR": ".claude"
@@ -50,7 +50,7 @@ shrimp-task-manager.create_task({
 **配置参数**：
 ```json
 {
-  "command": "npx",
+  "command": "npx", // Windows 用户请改为 "npx.cmd"
   "args": ["-y", "mcp-shrimp-task-manager"],
   "env": {
     "DATA_DIR": ".claude/shrimp",
@@ -145,7 +145,7 @@ npx chrome-devtools-mcp@latest
 **配置参数**：
 ```json
 {
-  "command": "npx",
+  "command": "npx", // Windows 用户请改为 "npx.cmd"
   "args": ["chrome-devtools-mcp@latest"],
   "env": {
     "WORKING_DIR": ".claude"
@@ -171,7 +171,7 @@ npx -y exa-mcp-server
 **配置参数**：
 ```json
 {
-  "command": "npx",
+  "command": "npx", // Windows 用户请改为 "npx.cmd"
   "args": ["-y", "exa-mcp-server"],
   "env": {
     "EXA_API_KEY": "your-api-key-here",
