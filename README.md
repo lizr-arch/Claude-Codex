@@ -1,121 +1,120 @@
 # Claude Code + Codex 协作开发环境
 
-> 🚀 3步配置，5分钟上手，让AI协作开发变得简单
+> 🚀 3步配置，5分钟上手，让AI协作开发变得简单。
+> **现已完美支持 Windows (PowerShell), macOS 和 Linux!**
 
 ## 📋 快速开始
 
-### 🎯 第一步：运行一键安装
-```bash
-curl -sSL https://raw.githubusercontent.com/Pluviobyte/Claude-Codex/main/install.sh | bash
-```
+### 🖥️ Windows 用户 (PowerShell)
 
-或者手动下载并运行：
-```bash
-# 下载安装脚本
-curl -O https://raw.githubusercontent.com/Pluviobyte/Claude-Codex/main/install.sh
-chmod +x install.sh
-./install.sh
-```
+我们为 Windows 用户提供了专门的 PowerShell 自动化脚本，支持自动识别 Codex 路径并配置环境。
 
-### 📋 第二步：选择配置类型
-脚本会提供三种配置选项：
-- 简单配置：基础协作功能
-- 标准配置：完整开发环境
-- 高级配置：企业级功能（可选Exa搜索需要API密钥）
+1. **运行安装脚本**
+   在 PowerShell 中执行：
+   ```powershell
+   .\install.ps1
+   ```
+   *脚本会自动完成以下操作：*
+   * ✅ 检测 Node.js, Python 等依赖
+   * ✅ 自动定位 Codex 可执行文件 (支持 NPM 全局安装路径)
+   * ✅ 生成适配 Windows 的配置文件
+   * ✅ 创建 `.claude` 数据目录结构
 
-### ✅ 第三步：重启并验证
-1. 重启Claude Code应用
-2. 在聊天中输入：`/available-tools`
-3. 确认能看到codex相关工具
+2. **配置命令行版 (Claude CLI) [可选]**
+   如果您使用终端版的 `claude`，请运行以下命令将工具注册到全局：
+   ```powershell
+   # 注册 Codex (请根据实际安装路径调整)
+   claude mcp add codex "C:\Users\YourName\AppData\Roaming\npm\node_modules\@openai\codex\vendor\x86_64-pc-windows-msvc\codex\codex.exe" mcp-server --scope user
 
-### 示例
-<img width="606" height="540" alt="image" src="https://github.com/user-attachments/assets/52c60cb3-7e4c-4e56-aec8-ee4f4f1e4af7" />
-<img width="746" height="507" alt="image" src="https://github.com/user-attachments/assets/510453cc-cc2d-4163-8865-178763411384" />
+   # 注册其他工具
+   claude mcp add sequential-thinking npx.cmd -- -y @modelcontextprotocol/server-sequential-thinking --scope user
+   claude mcp add shrimp-task-manager npx.cmd -- -y mcp-shrimp-task-manager --scope user
+   claude mcp add code-index uvx code-index-mcp --scope user
+   ```
 
+### 🍎 macOS / � Linux 用户
 
-## 🛠️ 配置选项
+1. **运行一键安装**
+   ```bash
+   ./install.sh
+   ```
 
-### 简单配置 (推荐新手)
-- Claude Code + Codex 基础协作
-- Sequential-thinking 深度思考
-- 适合快速体验和学习
-
-### 标准配置 (推荐日常使用)
-- 完整的协作开发环境
-- 任务管理和代码索引
-- 适合日常开发工作
-
-### 高级配置 (推荐高级用户)
-- 企业级开发环境
-- 浏览器调试和网络搜索
-- 适合复杂项目开发
-
-## 🎯 核心功能
-
-### 🤖 AI协作模式
-- **Claude Code**: 项目管理和代码执行
-- **Codex**: 深度代码分析和生成
-- **智能分工**: 简单任务Claude直接处理，复杂逻辑委托Codex
-
-### 🔧 智能工作流
-1. **需求理解** → 深度思考分析
-2. **上下文收集** → 全面代码检索
-3. **任务规划** → 智能任务分解
-4. **代码执行** → 小步迭代开发
-5. **质量验证** → 自动化测试和审查
-
-### ⚡ 核心优势
-- **零学习成本**: 基于熟悉的Claude Code界面
-- **智能默认**: 预配置最佳实践，减少配置决策
-- **渐进增强**: 从简单到高级，按需扩展功能
-- **高可靠性**: 完整的错误处理和自动恢复
-
-## 📚 使用示例
-
-### 基础对话
-```
-用户: 帮我创建一个React组件，显示用户列表
-
-Claude: 我来帮你创建一个React组件显示用户列表。让我先调用Codex进行深度分析，然后实现这个功能。
-```
-
-### 复杂任务
-```
-用户: 实现一个完整的用户管理系统，包括认证、CRUD操作和权限管理
-
-Claude: 这是一个复杂的多模块任务。让我使用sequential-thinking进行深度分析，然后制定详细的实施计划。
-```
-
-## 🔍 故障排除
-
-### 常见问题
-
-**Q: 看不到codex工具？**
-A: 确保配置文件正确安装，然后重启Claude Code
-
-**Q: Codex连接失败？**
-A: 确保Codex已正确安装并可以运行 `codex mcp-server` 命令
-
-**Q: MCP服务器连接失败？**
-A: 运行安装脚本进行修复，或手动安装相关依赖
-
-详细故障排除指南请查看：[troubleshooting.md](troubleshooting.md)
-
-## 📖 更多文档
-
-- [配置文件说明](README-config.md)
-- [故障排除指南](troubleshooting.md)
-- [高级配置指南](advanced.md)
-- [API参考文档](api.md)
-
-## 🤝 贡献
-
-欢迎贡献代码和改进建议！
-
-## 📄 许可证
-
-MIT License - 详见 [LICENSE](LICENSE) 文件
+2. **选择配置类型**
+   脚本会提供三种配置选项：
+   - **简单配置**：基础协作功能 (Codex + Thinking)
+   - **标准配置**：完整开发环境 (+ 任务管理 & 代码索引)
+   - **高级配置**：企业级功能 (+ 浏览器调试 & 联网搜索)
 
 ---
 
-**开始你的AI协作开发之旅吧！** 🚀
+## 🛠️ 核心功能与工具链
+
+本环境集成了以下强大的 MCP (Model Context Protocol) 工具：
+
+### 1. � Sequential Thinking (深度思考)
+- **作用**：让 AI 在编码前进行深度逻辑推理和步骤规划。
+- **使用场景**：遇到复杂算法、架构设计或难以定位的 Bug 时。
+- **指令示例**：`"请使用 sequential-thinking 分析这个问题"`
+
+### 2. � Codex (代码核心)
+- **作用**：OpenAI 提供的强大代码分析与生成引擎。
+- **能力**：
+  - 代码库扫描与检索
+  - 复杂逻辑设计
+  - 自动化代码审查
+- **指令示例**：`"请用 codex 扫描当前目录结构"`
+
+### 3. 🦐 Shrimp Task Manager (任务管理)
+- **作用**：用于长任务的规划、拆解和状态追踪。
+- **优势**：确保 AI 在长对话中不会"迷路"，清晰记录已完成和待办事项。
+- **指令示例**：`"创建一个任务计划来实现登录功能"`
+
+### 4. 🔍 Code Index (代码索引)
+- **作用**：建立本地代码索引，实现毫秒级代码搜索。
+- **指令示例**：`"搜索所有引用了 User 类的地方"`
+
+---
+
+## � 使用指南
+
+### 方式一：Claude Desktop (图形界面)
+1. 打开 Claude 桌面应用。
+2. 在聊天框输入 `/available-tools` 验证工具是否加载。
+3. 直接拖入文件或描述需求，AI 会自动调用工具。
+
+### 方式二：Claude CLI (命令行)
+1. 在终端输入 `claude` 启动。
+2. 输入 `/mcp list` 查看工具状态。
+3. 适合快速文件操作、Git 提交和脚本编写。
+
+---
+
+## 🔍 常见问题 (Windows)
+
+**Q: 运行 `install.ps1` 提示权限错误？**
+A: 请先运行 `Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass` 允许脚本执行。
+
+**Q: Claude CLI 提示 "No MCP servers configured"？**
+A: CLI 和 Desktop 的配置是隔离的。请参考上文 "配置命令行版" 章节，使用 `claude mcp add --scope user` 命令手动注册工具。
+
+**Q: Codex 路径找不到？**
+A: 推荐使用 NPM 全局安装 Codex。安装脚本会自动在 `%APPDATA%\npm\node_modules` 下查找。如果使用 VSCode 插件版，请手动指定路径。
+
+---
+
+## � 目录结构说明
+
+所有工具产生的数据都会保存在项目根目录的 `.claude/` 文件夹中：
+```text
+.claude/
+├── shrimp/         # 任务管理数据
+├── codex/          # Codex 分析缓存
+├── context/        # 上下文记录
+└── logs/           # 操作日志
+```
+
+## 🤝 贡献
+欢迎提交 Issue 或 PR 改进 Windows 脚本支持！
+
+## 📄 许可证
+MIT License
